@@ -1,5 +1,5 @@
 # Base image
-FROM python:3.9-slim
+FROM python:3.10-slim
 
 # install python
 RUN apt update && \
@@ -8,10 +8,10 @@ RUN apt update && \
 
 COPY requirements.txt requirements.txt
 COPY pyproject.toml pyproject.toml
-COPY mnist-exercise/ mnist-exercise/
+COPY mnist_exercise/ mnist_exercise/
 COPY data/ data/
 
 WORKDIR /
 RUN pip install . --no-cache-dir #(1)
 
-ENTRYPOINT ["python", "-u", "mnist-exercise/models/train_model.py"]
+ENTRYPOINT ["python", "-u", "mnist_exercise/models/train_model.py"]

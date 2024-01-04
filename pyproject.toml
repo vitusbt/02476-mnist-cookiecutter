@@ -3,7 +3,7 @@ requires = ["setuptools", "setuptools-scm"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "mnist-exercise"
+name = "mnist_exercise"
 version = "0.0.1"
 description = "MNIST exercise"
 authors = [
@@ -11,11 +11,11 @@ authors = [
 ]
 
 readme = "README.md"
-requires-python = "~=3.9.17"
+requires-python = "~=3.10"
 dynamic = ["dependencies", "optional-dependencies"]
 
 [tool.setuptools]
-packages = ["mnist-exercise"]
+packages = ["mnist_exercise"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}

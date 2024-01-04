@@ -2,7 +2,7 @@ import sys
 import os
 import click
 
-sys.path.append('mnist-exercise/')
+#sys.path.append('mnist-exercise/')
 os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 import numpy as np
@@ -10,8 +10,8 @@ import matplotlib.pyplot as plt
 import torch
 from torch import optim
 from torch.nn import CrossEntropyLoss
-from models.model import MyAwesomeModel
-from data.make_dataset import get_dataloaders
+from mnist_exercise.models.model import MyAwesomeModel
+from mnist_exercise.data.make_dataset import get_dataloaders
 
 @click.command()
 @click.option('--lr', default=1e-3, help="learning rate to use for training")

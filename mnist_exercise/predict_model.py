@@ -1,7 +1,7 @@
 import click
 import torch
 
-from data.make_dataset import get_dataloaders
+from mnist_exercise.data.make_dataset import get_dataloaders
 
 @click.command()
 @click.option('--model', help="path to model file")

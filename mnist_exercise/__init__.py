@@ -1,0 +1,2 @@
+from mnist_exercise.models.model import MyNeuralNet
+from mnist_exercise.predict_model import predict
