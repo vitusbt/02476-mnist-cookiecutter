@@ -3,7 +3,7 @@ import os
 import click
 
 #sys.path.append('mnist-exercise/')
-os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+#os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 import numpy as np
 import matplotlib.pyplot as plt

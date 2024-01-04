@@ -4,8 +4,8 @@
 # GLOBALS                                                                       #
 #################################################################################
 
-PROJECT_NAME = mnist-exercise
-PYTHON_VERSION = 3.9.17
+PROJECT_NAME = mnist_exercise
+PYTHON_VERSION = 3.10
 PYTHON_INTERPRETER = python
 
 #################################################################################
