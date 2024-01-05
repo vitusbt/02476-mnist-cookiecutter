@@ -12,6 +12,8 @@ COPY mnist_exercise/ mnist_exercise/
 COPY data/ data/
 
 WORKDIR /
-RUN pip install . --no-cache-dir #(1)
+RUN pip install . --no-cache-dir --default-timeout=100 #(1)
 
-ENTRYPOINT ["python", "-u", "mnist_exercise/models/train_model.py"]
+ENV PYTHONPATH "/"
+
+ENTRYPOINT ["python", "-u", "mnist_exercise/train_model.py"]
