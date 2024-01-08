@@ -1,9 +1,8 @@
-import sys
 import os
 import click
 
-#sys.path.append('mnist-exercise/')
-#os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
+# sys.path.append('mnist-exercise/')
+# os.environ["KMP_DUPLICATE_LIB_OK"]="TRUE"
 
 # os.environ['PYTHONPATH'] = "/"
 
@@ -19,10 +18,11 @@ from torch.nn import CrossEntropyLoss
 from mnist_exercise.models.model import MyAwesomeModel
 from mnist_exercise.data.make_dataset import get_dataloaders
 
+
 @click.command()
-@click.option('--lr', default=1e-3, help="learning rate to use for training")
-@click.option('--bs', default=128, help="batch size")
-@click.option('--epochs', default=20, help="number of epochs")
+@click.option("--lr", default=1e-3, help="learning rate to use for training")
+@click.option("--bs", default=128, help="batch size")
+@click.option("--epochs", default=20, help="number of epochs")
 def train(lr, bs, epochs):
     """Train a model on MNIST."""
 
@@ -46,19 +46,19 @@ def train(lr, bs, epochs):
             loss = loss_fn(labels_pred, labels)
             loss.backward()
             optimizer.step()
-            
+
             running_loss += loss.item()
         else:
-            training_losses[ep] = running_loss/len(train_set)
+            training_losses[ep] = running_loss / len(train_set)
             print(f"Epoch {ep+1}/{epochs} | Training loss: {training_losses[ep]}")
     else:
-        torch.save(model, 'models/model_mnist.pt')
+        torch.save(model, "models/model_mnist.pt")
 
-        if not os.path.exists('reports/figures'):
-            os.makedirs('reports/figures')
+        if not os.path.exists("reports/figures"):
+            os.makedirs("reports/figures")
 
         plt.figure()
-        plt.plot(np.arange(1,epochs+1), training_losses)
+        plt.plot(np.arange(1, epochs + 1), training_losses)
         plt.savefig("reports/figures/loss_curve.png")
         plt.close()
 

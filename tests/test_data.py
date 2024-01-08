@@ -3,7 +3,9 @@ import torch
 from mnist_exercise.data.make_dataset import get_dataloaders
 
 import os.path
-@pytest.mark.skipif(not os.path.exists('data/processed/train_images.pt'), reason="Data files not found")
+
+
+@pytest.mark.skipif(not os.path.exists("data/processed/train_images.pt"), reason="Data files not found")
 def test_data():
     train_loader, test_loader = get_dataloaders()
     assert len(train_loader.dataset) == 50000, "Training set did not have the correct number of samples"

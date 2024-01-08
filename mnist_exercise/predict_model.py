@@ -3,19 +3,17 @@ import torch
 
 from mnist_exercise.data.make_dataset import get_dataloaders
 
+
 @click.command()
-@click.option('--model', help="path to model file")
-@click.option('--bs', default=64, help="batch size for loading (not really important)")
-def predict(
-    model: torch.nn.Module,
-    bs: int
-) -> torch.Tensor:
+@click.option("--model", help="path to model file")
+@click.option("--bs", default=64, help="batch size for loading (not really important)")
+def predict(model: torch.nn.Module, bs: int) -> torch.Tensor:
     """Run prediction for a given model and dataloader.
-    
+
     Args:
         model: model to use for prediction
         bs: batch size
-    
+
     Returns
         Tensor of shape [N, d] where N is the number of samples and d is the output dimension of the model
 
@@ -42,14 +40,15 @@ def predict(
             correct += torch.sum(labels_pred == labels).item()
             total += labels.shape[0]
 
-        acc = correct/total
-        print(f'Correct: {correct}')
-        print(f'Total: {total}')
-        print(f'Accuracy: {acc*100}%')
+        acc = correct / total
+        print(f"Correct: {correct}")
+        print(f"Total: {total}")
+        print(f"Accuracy: {acc*100}%")
 
     return outputs
 
-    #return torch.cat([model(batch) for batch in dataloader], 0)
+    # return torch.cat([model(batch) for batch in dataloader], 0)
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     predict()

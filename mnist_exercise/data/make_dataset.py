@@ -1,24 +1,22 @@
-import sys
-import os
 import torch
 from torch.utils.data import TensorDataset, DataLoader
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     # Get the data and process it
 
     train_images = []
     train_target = []
     for i in range(10):
-        train_images.append(torch.load(f'data/raw/train_images_{i}.pt'))
-        train_target.append(torch.load(f'data/raw/train_target_{i}.pt'))
+        train_images.append(torch.load(f"data/raw/train_images_{i}.pt"))
+        train_target.append(torch.load(f"data/raw/train_target_{i}.pt"))
 
-    test_images = torch.load('data/raw/test_images.pt').unsqueeze(1)
-    test_target = torch.load('data/raw/test_target.pt')
+    test_images = torch.load("data/raw/test_images.pt").unsqueeze(1)
+    test_target = torch.load("data/raw/test_target.pt")
 
     train_images = torch.concat(train_images).unsqueeze(1)
 
-    #train_images = train_images*2 - 1
-    #test_images = test_images*2 - 1
+    # train_images = train_images*2 - 1
+    # test_images = test_images*2 - 1
 
     train_mean = torch.mean(train_images)
     train_std = torch.std(train_images)
