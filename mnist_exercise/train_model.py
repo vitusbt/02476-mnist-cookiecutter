@@ -29,7 +29,14 @@ def train(lr, bs, epochs):
     print("Training day and night")
     print(f"lr={lr}")
 
+    if torch.cuda.is_available(): 
+        dev = "cuda" 
+    else: 
+        dev = "cpu" 
+    device = torch.device(dev)
+
     model = MyAwesomeModel()
+    model.to(device)
     train_set, _ = get_dataloaders(batch_size=bs)
 
     # Optimizers require the parameters to optimize and a learning rate
@@ -42,12 +49,12 @@ def train(lr, bs, epochs):
         running_loss = 0
         for step, (images, labels) in enumerate(train_set):
             optimizer.zero_grad()
-            labels_pred = model(images)
-            loss = loss_fn(labels_pred, labels)
+            labels_pred = model(images.to(device))
+            loss = loss_fn(labels_pred, labels.to(device))
             loss.backward()
             optimizer.step()
 
-            running_loss += loss.item()
+            running_loss += loss.cpu().item()
         else:
             training_losses[ep] = running_loss / len(train_set)
             print(f"Epoch {ep+1}/{epochs} | Training loss: {training_losses[ep]}")
