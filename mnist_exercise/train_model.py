@@ -35,6 +35,8 @@ def train(lr, bs, epochs):
         dev = "cpu" 
     device = torch.device(dev)
 
+    print(f'device={device}')
+
     model = MyAwesomeModel()
     model.to(device)
     train_set, _ = get_dataloaders(batch_size=bs)
