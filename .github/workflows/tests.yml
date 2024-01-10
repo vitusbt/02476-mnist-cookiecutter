@@ -47,7 +47,11 @@ jobs:
 
     - uses: iterative/setup-dvc@v1
     - name: Get data
-      run: dvc pull
+      run: | 
+        echo '${{ secrets.GCLOUD_SERVICE_ACCOUNT_KEY_FILE }}' > gcs_key_file.json
+        gcloud auth activate-service-account --key-file=gcs_key_file.json
+        rm gcs_key_file.json
+        dvc pull
       env:
         GDRIVE_CREDENTIALS_DATA: ${{ secrets.GDRIVE_CREDENTIALS_DATA }}
 
